@@ -1,0 +1,13 @@
+{
+  "appId": "com.example.app",
+  "appName": "film-catalogue",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "dist/film-catalogue",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}

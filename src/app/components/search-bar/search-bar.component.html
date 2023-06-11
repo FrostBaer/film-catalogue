@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="/" (click)="searchTerm='';search()"><h3>{{title}}</h3></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Home
+              <span class="visually-hidden">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item" routerLink="/">
+            <a class="nav-link" (click)="setType()">{{this.type | uppercase}}</a>
+          </li>
+          <li class="nav-item" routerLink="/">
+            <a class="nav-link" (click)="searchTerm='&sort_by=vote_average.desc&vote_count.gte=1000&with_original_language=en|de';search()">Top rated</a>
+          </li>
+          <li class="nav-item" routerLink="/">
+            <a class="nav-link" (click)="searchTerm='&sort_by=popularity.desc';search()">Most popular</a>
+          </li>
+          <li class="nav-item dropdown" *ngIf="genres">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Genre</a>
+            <div class="dropdown-menu">
+              <div *ngFor="let genre of genres">
+                <a class="dropdown-item" routerLink="/" (click)="searchTerm='&with_genres='+genre.id;search()">{{genre.name}}</a>
+              </div>
+            </div>
+          </li>  
+        </ul>
+        <form class="d-flex">
+          <!--input class="form-control me-sm-2" type="text" placeholder="Search">
+          <button class="btn btn-secondary my-2 my-sm-0" type="submit" (click)="search()">Search</button-->
+        </form>
+      </div>
+    </div>
+  </nav>

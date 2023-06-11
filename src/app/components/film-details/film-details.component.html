@@ -1,0 +1,37 @@
+<div *ngIf="film$ | async as film">
+    <div class="card mb-3">
+        <h3 class="card-header">{{film.title | uppercase}} {{film.name | uppercase}}</h3>
+        <div class="card-body">
+            <h4 class="card-subtitle text-muted"  *ngIf="film.tagline">"{{film.tagline}}"</h4>
+            <h5 class="card-title">({{film.release_date | date:"yyyy"}} {{film.first_air_date | date:"yyyy"}})</h5>
+        </div>
+        <img src="{{'https://image.tmdb.org/t/p/w500/' + film.poster_path}}" alt="poster"/>
+       
+        <div class="card-body">
+            <h5 class="card-text">{{film.overview}}</h5>
+        </div>   
+        <div class="card-body">
+            <h5 class="card-text">Genres</h5>
+        </div>
+        <ul class="list-group list-group-flush" *ngFor="let genre of (film.genres)">
+            <li class="list-group-item">{{genre.name | lowercase}}</li>
+        </ul>
+        <div class="card-body" *ngIf="type==movie">
+            <a href="{{'https://www.imdb.com/title/' + film.imdb_id}}" class="card-link">IMDB</a>
+        </div>
+        <div class="card-footer text-muted">
+            <span>rating: </span><h3>{{film.vote_average}}</h3>
+        </div>
+    </div>
+    <div class="card">
+        <app-cast></app-cast>
+    </div>
+    <!--div class="card">    
+        <app-recommendations></app-recommendations>
+    </div-->
+</div>
+
+<div class="card" *ngIf="!film$">
+    <app-page-not-found></app-page-not-found>
+</div>
+

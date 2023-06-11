@@ -1,0 +1,11 @@
+<div class="list-group" *ngIf="filmsResponse">
+  <nav *ngFor="let film of (filmsResponse.results)"  [routerLink]="['/film', film.id]" (click)="onSelect(film)" 
+    class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">{{film.title}}{{film.name}}</h5>      
+      <small>({{film.release_date | date:"yyyy"}} {{film.first_air_date | date:"yyyy"}})</small>
+    </div>
+    <div class="mb-1">{{film.overview}}</div>
+    <small>rating: {{film.vote_average}}</small>
+  </nav>
+</div>

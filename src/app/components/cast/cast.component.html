@@ -1,0 +1,15 @@
+<h2 *ngIf="cast$">Cast</h2>
+<div class="row card-group">
+    <div class="col-md-4"  *ngFor="let actor of cast$">
+        <div class="card" [routerLink]="['/actor', actor.id]">
+            <img clas="card-image" src="{{'https://image.tmdb.org/t/p/w185/' + actor.profile_path}}" alt=""/>
+            <div class="card-body">
+                <h5 class="card-text text-center">{{actor.name}}</h5>
+                <h6 class="card-text text-center" *ngIf="actor.character"> as {{actor.character}}</h6>
+            </div>             
+        </div>
+    </div>
+</div>
+<div class="card" *ngIf="!cast$">
+    <app-page-not-found></app-page-not-found>
+</div>
